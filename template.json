@@ -1,0 +1,29 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationAccounts_LBOH_StopStart_VM_name": {
+            "defaultValue": "LBOH-StopStart-VM",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Automation/automationAccounts/runbooks",
+            "apiVersion": "2022-08-08",
+            "name": "[concat(parameters('automationAccounts_LBOH_StopStart_VM_name'), '/AutoStop_CreateAlert_Child')]",
+            "location": "uksouth",
+            "tags": {
+                "version": "1.0.0.0"
+            },
+            "properties": {
+                "description": "Runbook to create or disable alert for AutoStartStop",
+                "logVerbose": false,
+                "logProgress": false,
+                "logActivityTrace": 0,
+                "runbookType": "PowerShell"
+            }
+        }
+    ]
+}
